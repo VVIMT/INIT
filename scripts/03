@@ -1,0 +1,24 @@
+#!/bin/bash
+
+LGREEN='\033[1;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo "\n--------------------------------------------"
+cat .ssh/authorized_keys | cut -d@ -f2
+echo "--------------------------------------------"
+echo "Which machine's key do you want to remove?\n"
+read -r computer_name
+
+if [ -z "$computer_name" ]
+then
+        echo "Empty value"
+else
+        val=$(cat .ssh/authorized_keys | grep @$computer_name)
+        if cat .ssh/authorized_keys | grep -q @$computer_name; then
+                sed -i '/'@$computer_name'/d' .ssh/authorized_keys
+                echo "${LGREEN}-->Removed ${RED}\"$val\"${NC} ${LGREEN}from authorized_keys file${NC}\n"
+                service ssh restart
+                echo "${LGREEN}-->Restarted service ssh${NC}\n"
+        fi
+fi

@@ -1,0 +1,5 @@
+En session graphique, soit on reboot la machine, soit on clique sur "menu", "session", "Switch User", puis on entre les nouveaux credentials en se connectant.
+
+En session ssh, on entre la commande suivante:
+ssh <nouvel_utilisateur>@host[:port]
+puis on rentre le mot de passe du nouvel utilisateur.

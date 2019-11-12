@@ -1,0 +1,9 @@
+Pour faire pointer une addresse url vers une addressse IP, il faut modifier le fichier /etc/hosts avec la commande "sudo nano /etc/hosts".
+
+Dans notre cas il faudrait ajouter la ligne suivante au ficher:
+
+46.19.122.85	intra.42.fr
+
+enregistrer puis lancer la commande suivante afin de vider le cache DNS sur Mac OS X:
+
+sudo dscacheutil -flushcache
